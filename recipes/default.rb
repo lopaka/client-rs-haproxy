@@ -26,6 +26,7 @@ updated_haproxy_config = Mash.new(
     'all_requests' => {
       # HTTP bind address
       "bind #{node['haproxy']['incoming_address']}:#{node['haproxy']['incoming_port']}" => "",
+      # rspidel entries
       'rspidel' => ['^Set-cookie:\ IP=', '^Server:']
     }
   }
