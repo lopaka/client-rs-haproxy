@@ -1,0 +1,2 @@
+client-rs-haproxy Cookbook
+==========================
