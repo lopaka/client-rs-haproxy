@@ -17,6 +17,11 @@ updated_haproxy_config = Mash.new(
     'pidfile' => node['haproxy']['pid_file']
   },
   'defaults' => {
+    'timeout' => {
+      'client' => '20s',
+      'server' => '20s',
+      'connect' => '20s'
+    },
     'log' => 'global',
     'mode' => 'http',
     'option' => ['httplog', 'dontlognull', 'redispatch'],
@@ -34,7 +39,7 @@ updated_haproxy_config = Mash.new(
 
 include_recipe 'rs-haproxy::default'
 
-rewind 'haproxy["set up haproxy.cnf"]' do
+rewind 'haproxy[set up haproxy.cnf]' do
   config updated_haproxy_config
   action :create
 end
